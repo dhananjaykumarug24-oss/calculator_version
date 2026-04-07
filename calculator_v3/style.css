@@ -1,0 +1,86 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.calculator {
+  width: 320px;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+  background: rgba(10, 10, 20, 0.92);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.display {
+  padding: 10px 20px;
+  text-align: right;
+}
+
+.expression {
+  color: #475569;
+  font-size: 14px;
+  height: 20px;
+}
+
+.result {
+  color: white;
+  font-size: 42px;
+  margin-top: 5px;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 16px;
+}
+
+button {
+  height: 60px;
+  border-radius: 16px;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+}
+
+.number {
+  background: #3f3f46;
+}
+
+.operator {
+  background: linear-gradient(145deg, #f59e0b, #f97316);
+}
+
+.action {
+  background: #a1a1aa;
+  color: black;
+}
+
+.equal {
+  background: linear-gradient(145deg, #f59e0b, #f97316);
+}
+
+.zero {
+  grid-column: span 2;
+  text-align: left;
+  padding-left: 20px;
+}

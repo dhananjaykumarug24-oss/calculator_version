@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="calculator">
+  
+  <div class="header">
+    <span>Calculator</span>
+    <span>v3.0</span>
+  </div>
+
+  <div class="display">
+    <div class="expression" id="expression"></div>
+    <div class="result" id="result">0</div>
+  </div>
+
+  <div class="buttons">
+    <button class="action" onclick="clearAll()">AC</button>
+    <button class="action" onclick="toggleSign()">+/-</button>
+    <button class="action" onclick="percent()">%</button>
+    <button class="operator" onclick="setOperator('/')">÷</button>
+
+    <button class="number" onclick="press('7')">7</button>
+    <button class="number" onclick="press('8')">8</button>
+    <button class="number" onclick="press('9')">9</button>
+    <button class="operator" onclick="setOperator('*')">×</button>
+
+    <button class="number" onclick="press('4')">4</button>
+    <button class="number" onclick="press('5')">5</button>
+    <button class="number" onclick="press('6')">6</button>
+    <button class="operator" onclick="setOperator('-')">−</button>
+
+    <button class="number" onclick="press('1')">1</button>
+    <button class="number" onclick="press('2')">2</button>
+    <button class="number" onclick="press('3')">3</button>
+    <button class="operator" onclick="setOperator('+')">+</button>
+
+    <button class="number zero" onclick="press('0')">0</button>
+    <button class="number" onclick="press('.')">.</button>
+    <button class="equal" onclick="calculate()">=</button>
+  </div>
+
+</div>
+
+<script>
+let display = "0";
+let prev = null;
+let operator = null;
+
+function update() {
+  document.getElementById("result").innerText = display;
+}
+
+function press(num) {
+  if (display === "0") display = num;
+  else display += num;
+  update();
+}
+
+function clearAll() {
+  display = "0";
+  prev = null;
+  operator = null;
+  document.getElementById("expression").innerText = "";
+  update();
+}
+
+function setOperator(op) {
+  prev = display;
+  operator = op;
+  display = "0";
+  document.getElementById("expression").innerText = prev + " " + op;
+}
+
+function calculate() {
+  if (!operator || !prev) return;
+
+  let result;
+  let a = parseFloat(prev);
+  let b = parseFloat(display);
+
+  if (operator === "+") result = a + b;
+  if (operator === "-") result = a - b;
+  if (operator === "*") result = a * b;
+  if (operator === "/") result = b === 0 ? "Error" : a / b;
+
+  display = result.toString();
+  document.getElementById("expression").innerText = prev + " " + operator + " " + display;
+  prev = null;
+  operator = null;
+  update();
+}
+
+function toggleSign() {
+  display = (parseFloat(display) * -1).toString();
+  update();
+}
+
+function percent() {
+  display = (parseFloat(display) / 100).toString();
+  update();
+}
+</script>
+
+</body>
+</html>
