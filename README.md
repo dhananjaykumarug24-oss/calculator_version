@@ -7,3 +7,4 @@ Added a GUI calculator
 Added a Web Calculator
 #v4.0
 Addedd a GUI Scientific Calculator
+Added more functionality
